@@ -1,65 +1,65 @@
-package com.readableregex;
+package com.gmanjon.regx;
 
-public class RR {
+public class RegX {
 
     private StringBuilder regex = new StringBuilder("");
     
-    public static RR rr() {
-        return new RR();
+    public static RegX regx() {
+        return new RegX();
     }
 
-    public RR anyChar() {
+    public RegX anyChar() {
         regex.append(".");
         return this;
     }
 
-    public RR anyTimes() {
+    public RegX anyTimes() {
         regex.append("*");
         return this;
     }
 
-    public RR wordChar() {
+    public RegX wordChar() {
         regex.append("\\w");
         return this;
     }
 
-    public RR anyWord() {
+    public RegX anyWord() {
         regex.append("\\w+");
         return this;
     }
 
-    public RR digit() {
+    public RegX digit() {
         regex.append("\\d");
         return this;
     }
 
-    public RR group() {
-        regex.insert(0, "(?").append(')');
+    public RegX group() {
+        regex.insert(0, "(?:").append(')');
         return this;
     }
 
-    public RR capturingGroup(String name) {
+    public RegX capturingGroup(String name) {
         regex.insert(0, "(?P").append(')');
         return this;
     }
 
-    public RR oneOrMoreTimes() {
+    public RegX oneOrMoreTimes() {
         regex.append("+");
         return this;
     }
 
-    public RR literal(char c) {
+    public RegX literal(char c) {
         regex.append(c);
         return this;
     }
 
-    public RR literal(String s) {
+    public RegX literal(String s) {
         regex.append("\\Q").append(s).append("\\E");
         return this;
     }
 
-    public RR insert(RR rr) {
-        regex.append(rr.regex);
+    public RegX insert(RegX regx) {
+        regex.append(regx.regex);
         return this;
     }
 
