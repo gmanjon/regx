@@ -99,7 +99,7 @@ public class RegXTest {
         assertNoMatch("aaaaa", regex);
     }
 
-    @Test(expected = IllegalStateException.class)
+    @Test(expected = IndexOutOfBoundsException.class)
     public void groupNoCapturing() {
         String regex = regx().literal("aa").group().anyTimes().getRegex();
         assertParameterMatches("aa", regex, 1, null);
