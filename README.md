@@ -6,7 +6,7 @@ Basic usage:
 
 * Create a regular expression meaning "any _a_ followed by a pair number of _b's_"
 
-Regular Expression: a*(bb)*
+Regular Expression: a\*(bb)\*
 RegX Syntax:
 ```java
 String regx = regx().literal("a").anyTimes().followedBy(regx().literalGroup("bb").anyTimes()).toString();
@@ -14,7 +14,7 @@ String regx = regx().literal("a").anyTimes().followedBy(regx().literalGroup("bb"
 
 * Create a regular expression for validating emails (may be could be more accurate to mail specifications, but will do for example pourpuses)
 
-Regular Expression: [a-zA-Z](\.?\w+)*@(\w+)*\.[a-zA-Z]{2,5}
+Regular Expression: \[a-zA-Z\](\\.?\w+)*@(\w+)*\\.[a-zA-Z]{2,5}
 RegX Syntax:
 ```java
         RegX startAccountName = regx().alphabeticChar();
@@ -38,12 +38,12 @@ RegX Syntax:
     <tr>
         <td>x</td>
         <td>The character x</td>
-        <td>`literal('x')`</td>
+        <td>reg().literal('x')</td>
     </tr>
     <tr>
         <td>\\</td>
         <td>The backslash character</td>
-        <td>` `</td>
+        <td>reg().literal('\\') // escape necessary for java, not for regex</td>
     </tr>
     <tr>
         <td>\0n</td>
