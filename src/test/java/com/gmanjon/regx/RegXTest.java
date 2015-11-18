@@ -1,17 +1,16 @@
 package com.gmanjon.regx;
 
 import static com.gmanjon.regx.RegX.regx;
-import org.junit.Assert;
+import static com.gmanjon.regx.RegexTestUtils.assertMatches;
+import static com.gmanjon.regx.RegexTestUtils.assertNoMatch;
+import static com.gmanjon.regx.RegexTestUtils.assertParameterMatches;
 import org.junit.Test;
-
-import java.util.regex.Matcher;
-import java.util.regex.Pattern;
 
 public class RegXTest {
 
     @Test
     public void anyChar() {
-        String regex = regx().anyChar().getRegex();
+        String regex = regx().anyChar().toString();
 
         assertMatches("a", regex);
         assertMatches("b", regex);
@@ -25,7 +24,7 @@ public class RegXTest {
 
     @Test
     public void anyTimes() {
-        String regex = regx().anyChar().anyTimes().getRegex();
+        String regex = regx().anyChar().anyTimes().toString();
 
         assertMatches("a", regex);
         assertMatches("bb", regex);
@@ -36,7 +35,7 @@ public class RegXTest {
 
     @Test
     public void alphanumericChar() {
-        String regex = regx().alphanumericChar().getRegex();
+        String regex = regx().alphanumericChar().toString();
 
         assertMatches("a", regex);
         assertMatches("z", regex);
@@ -54,7 +53,7 @@ public class RegXTest {
 
     @Test
     public void anyWord() {
-        String regex = regx().anyWord().getRegex();
+        String regex = regx().anyWord().toString();
 
         assertMatches("o", regex);
         assertMatches("ole", regex);
@@ -73,7 +72,7 @@ public class RegXTest {
 
     @Test
     public void digit() {
-        String regex = regx().digit().getRegex();
+        String regex = regx().digit().toString();
 
         assertMatches("0", regex);
         assertMatches("9", regex);
@@ -88,7 +87,7 @@ public class RegXTest {
 
     @Test
     public void group() {
-        String regex = regx().literal("aa").group().anyTimes().getRegex();
+        String regex = regx().literal("aa").group().anyTimes().toString();
 
         assertMatches("aa", regex);
         assertMatches("aaaa", regex);
@@ -101,7 +100,7 @@ public class RegXTest {
 
     @Test(expected = IndexOutOfBoundsException.class)
     public void groupNoCapturing() {
-        String regex = regx().literal("aa").group().anyTimes().getRegex();
+        String regex = regx(false).literal("aa").group().anyTimes().toString();
         assertParameterMatches("aa", regex, 1, null);
     }
 
@@ -111,7 +110,7 @@ public class RegXTest {
         RegX regex3 = regx().regex("ef");
         RegX regex1 = regx().regex("ab").followedBy(regex2).followedBy(regex3);
 
-        String regex = regex1.getRegex();
+        String regex = regex1.toString();
 
         assertMatches("abcdef", regex);
         assertParameterMatches("abcdef", regex, 1, "cd");
@@ -124,7 +123,7 @@ public class RegXTest {
         RegX regex3 = regx().regex("ef");
         RegX regex1 = regx().regex("ab").followedBy(regex2).followedBy(regex3);
 
-        String regex = regex1.getRegex();
+        String regex = regex1.toString();
 
         assertMatches("abcdef", regex);
         assertParameterMatches("abcdef", regex, groupName, "cd");
@@ -132,7 +131,7 @@ public class RegXTest {
 
     @Test
     public void oneOrMoreTimes() {
-        String regex = regx().anyChar().oneOrMoreTimes().getRegex();
+        String regex = regx().anyChar().oneOrMoreTimes().toString();
 
         assertMatches("a", regex);
         assertMatches("bb", regex);
@@ -145,14 +144,14 @@ public class RegXTest {
     @Test
     public void literalTestChar() {
         char c = '*';
-        String regex = regx().literal(c).getRegex();
+        String regex = regx().literal(c).toString();
         assertMatches(String.valueOf(c), regex);
     }
 
     @Test
     public void literalTestString() {
         String literal = "*+*\\\\s";
-        String regex = regx().literal(literal).getRegex();
+        String regex = regx().literal(literal).toString();
         assertMatches(literal, regex);
     }
 
@@ -161,7 +160,7 @@ public class RegXTest {
         RegX regex1 = regx().literal("achili");
         RegX regex2 = regx().literal("pu");
         RegX regex3 = regx().literal("apu");
-        String regex = regex1.or(regex2).or(regex3).getRegex();
+        String regex = regex1.or(regex2).or(regex3).toString();
 
         assertMatches("achili", regex);
         assertMatches("pu", regex);
@@ -171,33 +170,5 @@ public class RegXTest {
         assertNoMatch("achili|pu|apu", regex);
     }
 
-    private void assertMatches(String match, String regex) {
-        Assert.assertTrue(match.matches(regex));
-    }
-
-    private void assertNoMatch(String noMatch, String regex) {
-        Assert.assertFalse(noMatch.matches(regex));
-    }
-
-    private void assertParameterMatches(String string, String regex, int groupIndex, String paramExpectedValue) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(string);
-        matcher.matches();
-        Assert.assertEquals(paramExpectedValue, matcher.group(groupIndex));
-    }
-
-    private void assertParameterMatches(String string, String regex, String groupName, String paramExpectedValue) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(string);
-        matcher.matches();
-        Assert.assertEquals(paramExpectedValue, matcher.group(groupName));
-    }
-
-    private void assertParameterNoMatch(String string, String regex, int paramIndex, String paramUnexpectedValue) {
-        Pattern pattern = Pattern.compile(regex);
-        Matcher matcher = pattern.matcher(string);
-        matcher.matches();
-        Assert.assertNotEquals(paramUnexpectedValue, matcher.group(paramIndex));
-    }
 
 }
