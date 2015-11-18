@@ -5,7 +5,7 @@
 
 ## Characters
 <table>
-<tr><td>**Support**</td><td>**Construct**</td><td>**Matches**</td></tr>
+<tr><td>*Support*</td><td> **Construct** </td><td> *Matches* </td></tr>
 <tr><td></td><td>x</td><td>The character x</td></tr>
 <tr><td>:white_check_mark:</td><td>\\</td><td>The backslash character</td></tr>
 <tr><td>:white_check_mark:</td><td>\0n</td><td>The character with octal value 0n (0 <= n <= 7)</td></tr>
