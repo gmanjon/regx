@@ -50,4 +50,25 @@ public class ReadmeSamplesTest {
 
         assertNoMatch("asdc?asdc@asdc.com", regx);
     }
+
+    @Test
+    public void charactersSection() {
+        assertMatches(" ", regx().literal(040).toString());
+        assertMatches("a", regx().literal(0141).toString());
+
+        assertMatches("a", regx().literal(0x61).toString());
+        assertMatches("a", regx().literal(0x0061).toString());
+        assertMatches("a", regx().literal(0x000061).toString());
+
+        assertMatches("\t", regx().literal('\t').toString());
+        assertMatches("\n", regx().literal('\n').toString());
+        assertMatches("\r", regx().literal('\r').toString());
+        assertMatches("\f", regx().literal('\f').toString());
+        assertMatches("\u0007", regx().literal(0x0007).toString());
+        assertMatches("\u001B", regx().literal(0x001B).toString());
+        assertMatches("\u0007", regx().regex("\\a").toString());
+        assertMatches("\u001B", regx().regex("\\e").toString());
+        assertMatches("\2", regx().literal('\2').toString());
+    }
+
 }
