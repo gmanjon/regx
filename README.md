@@ -114,12 +114,12 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>\a</td>
         <td>The alert (bell) character ('\u0007')</td>
-        <td><code>r.literal(0x0007)``` or ```r.regex("\a")</code></td>
+        <td><code>r.literal(0x0007)</code> or <code>r.regex("\a")</code></td>
     </tr>
     <tr>
         <td>\e</td>
         <td>The escape character ('\u001B')</td>
-        <td><code>r.literal(0x001B)``` or ```r.regex("\e")</code></td>
+        <td><code>r.literal(0x001B)</code> or <code>r.regex("\e")</code></td>
     </tr>
     <tr>
         <td>\cx</td>
