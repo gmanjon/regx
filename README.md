@@ -54,7 +54,7 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>x</td>
         <td>The character x</td>
-        <td>{{r.literal('x')}}</td>
+        <td>``r.literal('x')``</td>
     </tr>
     <tr>
         <td>\\</td>
