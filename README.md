@@ -54,12 +54,12 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>x</td>
         <td>The character x</td>
-        <td>`r.literal('x')`</td>
+        <td> `r.literal('x')` </td>
     </tr>
     <tr>
         <td>\\</td>
         <td>The backslash character</td>
-        <td>```r.literal('\\')```</td>
+        <td> ```r.literal('\\')``` </td>
     </tr>
     <tr>
         <td>\0n</td>
