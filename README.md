@@ -54,77 +54,77 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>x</td>
         <td>The character x</td>
-        <td> `r.literal('x')` </td>
+        <td><code>r.literal('x')</code></td>
     </tr>
     <tr>
         <td>\\</td>
         <td>The backslash character</td>
-        <td> ```r.literal('\\')``` </td>
+        <td><code>r.literal('\\')</code></td>
     </tr>
     <tr>
         <td>\0n</td>
         <td>The character with octal value 0n (0 <= n <= 7)</td>
-        <td>```r.literal(0n)```</td>
+        <td><code>r.literal(0n)</code></td>
     </tr>
     <tr>
         <td>\0nn</td>
         <td>The character with octal value 0nn (0 <= n <= 7)</td>
-        <td>```r.literal(0nn)```</td>
+        <td><code>r.literal(0nn)</code></td>
     </tr>
     <tr>
         <td>\0mnn</td>
         <td>The character with octal value 0mnn (0 <= m <= 3, 0 <= n <= 7)</td>
-        <td>{{r.literal(0mnn)}}</td>
+        <td><code>r.literal(0mnn)</code></td>
     </tr>
     <tr>
         <td>\xhh</td>
         <td>The character with hexadecimal value 0xhh</td>
-        <td>```r.literal(0xhh)```</td>
+        <td><code>r.literal(0xhh)</code></td>
     </tr>
     <tr>
         <td>\uhhhh</td>
         <td>The character with hexadecimal value 0xhhhh</td>
-        <td>```r.literal(0xhhhh)```</td>
+        <td><code>r.literal(0xhhhh)</code></td>
     </tr>
     <tr>
         <td>\x{h...h}</td>
         <td>The character with hexadecimal value 0xh...h (Character.MIN_CODE_POINT  <= 0xh...h <=  Character.MAX_CODE_POINT)</td>
-        <td>```r.literal(0xh...h)```</td>
+        <td><code>r.literal(0xh...h)</code></td>
     </tr>
     <tr>
         <td>\t</td>
         <td>The tab character ('\u0009')</td>
-        <td>```r.literal('\t')```</td>
+        <td><code>r.literal('\t')</code></td>
     </tr>
     <tr>
         <td>\n</td>
         <td>The newline (line feed) character ('\u000A')</td>
-        <td>```r.literal('\n')```</td>
+        <td><code>r.literal('\n')</code></td>
     </tr>
     <tr>
         <td>\r</td>
         <td>The carriage-return character ('\u000D')</td>
-        <td>```r.literal('\r')```</td>
+        <td><code>r.literal('\r')</code></td>
     </tr>
     <tr>
         <td>\f</td>
         <td>The form-feed character ('\u000C')</td>
-        <td>```r.literal('\f')```</td>
+        <td><code>r.literal('\f')</code></td>
     </tr>
     <tr>
         <td>\a</td>
         <td>The alert (bell) character ('\u0007')</td>
-        <td>```r.literal(0x0007)``` or ```r.regex("\a")```</td>
+        <td><code>r.literal(0x0007)``` or ```r.regex("\a")</code></td>
     </tr>
     <tr>
         <td>\e</td>
         <td>The escape character ('\u001B')</td>
-        <td>```r.literal(0x001B)``` or ```r.regex("\e")```</td>
+        <td><code>r.literal(0x001B)``` or ```r.regex("\e")</code></td>
     </tr>
     <tr>
         <td>\cx</td>
         <td>The control character corresponding to x</td>
-        <td>```r.literal('\x')```</td>
+        <td><code>r.literal('\x')</code></td>
     </tr>
 </table>
 
@@ -138,37 +138,37 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>[abc]</td>
         <td>a, b, or c (simple class)</td>
-        <td>```r.oneOf("abc")```</td>
+        <td><code>r.oneOf("abc")</code></td>
     </tr>
     <tr>
         <td>[^abc]</td>
         <td>Any character except a, b, or c (negation)</td>
-        <td>```r.noneOf("abc")```</td>
+        <td><code>r.noneOf("abc")</code></td>
     </tr>
     <tr>
         <td>[a-zA-Z]</td>
         <td>a through z or A through Z, inclusive (range)</td>
-        <td>```r.range('a','z','A,'Z')```</td>
+        <td><code>r.range('a','z','A,'Z')</code></td>
     </tr>
     <tr>
         <td>[a-d[m-p]]</td>
         <td>a through d, or m through p: [a-dm-p] (union)</td>
-        <td>```r.range('a','d','m','p')```</td>
+        <td><code>r.range('a','d','m','p')</code></td>
     </tr>
     <tr>
         <td>[a-z&&[def]]</td>
         <td>d, e, or f (intersection)</td>
-        <td>```r.range('a','z').intersectOneOf("def")```</td>
+        <td><code>r.range('a','z').intersectOneOf("def")</code></td>
     </tr>
     <tr>
         <td>[a-z&&[^bc]]</td>
         <td>a through z, except for b and c: [ad-z] (subtraction)</td>
-        <td>```r.range('a','z').intersectNoneOf("bc")```</td>
+        <td><code>r.range('a','z').intersectNoneOf("bc")</code></td>
     </tr>
     <tr>
         <td>[a-z&&[^m-p]]</td>
         <td>a through z, and not m through p: [a-lq-z](subtraction)</td>
-        <td>```r.range('a','z').intersectExclude('m','p')```</td>
+        <td><code>r.range('a','z').intersectExclude('m','p')</code></td>
     </tr>
 </table>
 
@@ -182,17 +182,17 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>.</td>
         <td>Any character (may or may not match line terminators)</td>
-        <td>```r.anyChar()```</td>
+        <td><code>r.anyChar()</code></td>
     </tr>
     <tr>
         <td>\d</td>
         <td>A digit: [0-9]</td>
-        <td>```r.digit()```</td>
+        <td><code>r.digit()</code></td>
     </tr>
     <tr>
         <td>\D</td>
         <td>A non-digit: [^0-9]</td>
-        <td>```r.nonDigit()```</td>
+        <td><code>r.nonDigit()</code></td>
     </tr>
     <tr>
         <td>\s</td>
@@ -373,12 +373,12 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>^</td>
         <td>The beginning of a line</td>
-        <td>```r.startOfLine()```</td>
+        <td><code>r.startOfLine()</code></td>
     </tr>
     <tr>
         <td>$</td>
         <td>The end of a line</td>
-        <td>```r.endOfLine()```</td>
+        <td><code>r.endOfLine()</code></td>
     </tr>
     <tr>
         <td>\b</td>
@@ -422,32 +422,32 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>X?</td>
         <td>X, once or not at all</td>
-        <td>```r.literal('X').optional()```</td>
+        <td><code>r.literal('X').optional()</code></td>
     </tr>
     <tr>
         <td>X*</td>
         <td>X, zero or more times</td>
-        <td>```r.literal('X').anyTimes()```</td>
+        <td><code>r.literal('X').anyTimes()</code></td>
     </tr>
     <tr>
         <td>X+</td>
         <td>X, one or more times</td>
-        <td>```r.literal('X').oneOrMoreTimes()```</td>
+        <td><code>r.literal('X').oneOrMoreTimes()</code></td>
     </tr>
     <tr>
         <td>X{n}</td>
         <td>X, exactly n times</td>
-        <td>```r.literal('X').times(n)```</td>
+        <td><code>r.literal('X').times(n)</code></td>
     </tr>
     <tr>
         <td>X{n,}</td>
         <td>X, at least n times</td>
-        <td>```r.literal('X').times(n, -1)```</td>
+        <td><code>r.literal('X').times(n, -1)</code></td>
     </tr>
     <tr>
         <td>X{n,m}</td>
         <td>X, at least n but not more than m times</td>
-        <td>```r.literal('X').times(n, m)```</td>
+        <td><code>r.literal('X').times(n, m)</code></td>
     </tr>
 </table>
 
@@ -461,22 +461,22 @@ All examples assume the RegX object is already created in a variables called ```
     <tr>
         <td>X??</td>
         <td>X, once or not at all</td>
-        <td>```r.literal('X').optional()```</td>
+        <td><code>r.literal('X').optional()</code></td>
     </tr>
     <tr>
         <td>X*?</td>
         <td>X, zero or more times</td>
-        <td>```r.literal('X').anyTimesLazy()```</td>
+        <td><code>r.literal('X').anyTimesLazy()</code></td>
     </tr>
     <tr>
         <td>X+?</td>
         <td>X, one or more times</td>
-        <td>```r.literal('X').oneOrMoreTimesLazy()```</td>
+        <td><code>r.literal('X').oneOrMoreTimesLazy()</code></td>
     </tr>
     <tr>
         <td>X{n}?</td>
         <td>X, exactly n times</td>
-        <td>```r.literal('X').times(n)```</td>
+        <td><code>r.literal('X').times(n)</code></td>
     </tr>
     <tr>
         <td>X{n,}?</td>
